@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		A488BE154E72F3E1F5933F13 /* Pods_Instagram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1B76C2C4F55FC0636797545 /* Pods_Instagram.framework */; };
 		BA2D08E2231F7F7A00DD494E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA2D08E1231F7F7A00DD494E /* GoogleService-Info.plist */; };
+		BA2D090223264DA400DD494E /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2D090123264DA400DD494E /* MainTabBarController.swift */; };
+		BA2D0904232686DE00DD494E /* UserProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2D0903232686DE00DD494E /* UserProfileController.swift */; };
+		BA2D09072326925D00DD494E /* UserProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2D09062326925D00DD494E /* UserProfileHeader.swift */; };
 		BAF9F8D923166F870015B548 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF9F8D823166F870015B548 /* AppDelegate.swift */; };
 		BAF9F8DB23166F870015B548 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF9F8DA23166F870015B548 /* ViewController.swift */; };
 		BAF9F8DE23166F870015B548 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAF9F8DC23166F870015B548 /* Main.storyboard */; };
@@ -20,6 +23,9 @@
 /* Begin PBXFileReference section */
 		74A0535B685CF78C93DA7E90 /* Pods-Instagram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instagram.debug.xcconfig"; path = "Target Support Files/Pods-Instagram/Pods-Instagram.debug.xcconfig"; sourceTree = "<group>"; };
 		BA2D08E1231F7F7A00DD494E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BA2D090123264DA400DD494E /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		BA2D0903232686DE00DD494E /* UserProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileController.swift; sourceTree = "<group>"; };
+		BA2D09062326925D00DD494E /* UserProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileHeader.swift; sourceTree = "<group>"; };
 		BAF9F8D523166F870015B548 /* Instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAF9F8D823166F870015B548 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BAF9F8DA23166F870015B548 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -61,6 +67,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BA2D09052326922D00DD494E /* UserProfile */ = {
+			isa = PBXGroup;
+			children = (
+				BA2D0903232686DE00DD494E /* UserProfileController.swift */,
+				BA2D09062326925D00DD494E /* UserProfileHeader.swift */,
+			);
+			path = UserProfile;
+			sourceTree = "<group>";
+		};
 		BAF9F8CC23166F870015B548 = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +97,7 @@
 		BAF9F8D723166F870015B548 /* Instagram */ = {
 			isa = PBXGroup;
 			children = (
+				BA2D09052326922D00DD494E /* UserProfile */,
 				BAF9F8EA23181A7A0015B548 /* Helper */,
 				BAF9F8D823166F870015B548 /* AppDelegate.swift */,
 				BAF9F8DA23166F870015B548 /* ViewController.swift */,
@@ -90,6 +106,7 @@
 				BAF9F8E123166F880015B548 /* LaunchScreen.storyboard */,
 				BA2D08E1231F7F7A00DD494E /* GoogleService-Info.plist */,
 				BAF9F8E423166F880015B548 /* Info.plist */,
+				BA2D090123264DA400DD494E /* MainTabBarController.swift */,
 			);
 			path = Instagram;
 			sourceTree = "<group>";
@@ -229,6 +246,9 @@
 			files = (
 				BAF9F8DB23166F870015B548 /* ViewController.swift in Sources */,
 				BAF9F8EC23181AAC0015B548 /* Extensions.swift in Sources */,
+				BA2D090223264DA400DD494E /* MainTabBarController.swift in Sources */,
+				BA2D09072326925D00DD494E /* UserProfileHeader.swift in Sources */,
+				BA2D0904232686DE00DD494E /* UserProfileController.swift in Sources */,
 				BAF9F8D923166F870015B548 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -377,6 +397,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QRP987SWMC;
 				INFOPLIST_FILE = Instagram/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -395,6 +416,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QRP987SWMC;
 				INFOPLIST_FILE = Instagram/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
