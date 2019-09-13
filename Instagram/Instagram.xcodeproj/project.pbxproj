@@ -12,6 +12,7 @@
 		BA2D090223264DA400DD494E /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2D090123264DA400DD494E /* MainTabBarController.swift */; };
 		BA2D0904232686DE00DD494E /* UserProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2D0903232686DE00DD494E /* UserProfileController.swift */; };
 		BA2D09072326925D00DD494E /* UserProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2D09062326925D00DD494E /* UserProfileHeader.swift */; };
+		BA2D098C232C014200DD494E /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2D098B232C014200DD494E /* LoginController.swift */; };
 		BAF9F8D923166F870015B548 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF9F8D823166F870015B548 /* AppDelegate.swift */; };
 		BAF9F8DB23166F870015B548 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF9F8DA23166F870015B548 /* ViewController.swift */; };
 		BAF9F8DE23166F870015B548 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAF9F8DC23166F870015B548 /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 		BA2D090123264DA400DD494E /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		BA2D0903232686DE00DD494E /* UserProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileController.swift; sourceTree = "<group>"; };
 		BA2D09062326925D00DD494E /* UserProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileHeader.swift; sourceTree = "<group>"; };
+		BA2D098B232C014200DD494E /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		BAF9F8D523166F870015B548 /* Instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAF9F8D823166F870015B548 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BAF9F8DA23166F870015B548 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +78,14 @@
 			path = UserProfile;
 			sourceTree = "<group>";
 		};
+		BA2D098A232C012600DD494E /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				BA2D098B232C014200DD494E /* LoginController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		BAF9F8CC23166F870015B548 = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +107,7 @@
 		BAF9F8D723166F870015B548 /* Instagram */ = {
 			isa = PBXGroup;
 			children = (
+				BA2D098A232C012600DD494E /* Login */,
 				BA2D09052326922D00DD494E /* UserProfile */,
 				BAF9F8EA23181A7A0015B548 /* Helper */,
 				BAF9F8D823166F870015B548 /* AppDelegate.swift */,
@@ -250,6 +261,7 @@
 				BA2D09072326925D00DD494E /* UserProfileHeader.swift in Sources */,
 				BA2D0904232686DE00DD494E /* UserProfileController.swift in Sources */,
 				BAF9F8D923166F870015B548 /* AppDelegate.swift in Sources */,
+				BA2D098C232C014200DD494E /* LoginController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

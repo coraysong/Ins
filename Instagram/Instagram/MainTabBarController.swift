@@ -7,16 +7,23 @@
 //
 
 import UIKit
+import Firebase
 
 class MainTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .blue
+        
+        if Auth.auth().currentUser == nil {
+            
+            DispatchQueue.main.async {
+                let loginController = LoginController()
+                self.present(loginController,animated: true, completion: nil)
+            }
+            return
+        }
         
         let redVC = UIViewController()
         redVC.view.backgroundColor = .red
-        
-        
         
         
         let layout = UICollectionViewFlowLayout()
@@ -30,7 +37,7 @@ class MainTabBarController: UITabBarController {
         navController.tabBarItem.selectedImage = UIImage(named: "profile_selected")
         tabBar.tintColor = .black
         
-        viewControllers = [navController]
+        viewControllers = [navController, UIViewController()]
         
     }
 }
