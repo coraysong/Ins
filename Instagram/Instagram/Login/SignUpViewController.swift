@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SignUpViewController.swift
 //  Instagram
 //
 //  Created by 宋超 on 2019/8/28.
@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+class SignUpViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     let plusPhotoButton: UIButton = {
         let button = UIButton()
