@@ -29,10 +29,15 @@ class PhotoSelectorController: UICollectionViewController, UICollectionViewDeleg
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.selectedImage = images[indexPath.item]
         self.collectionView.reloadData()
+        let indexPath = IndexPath(item: 0, section: 0)
+        
+        collectionView.scrollToItem(at: indexPath, at: .bottom, animated: true)
     }
     
     var selectedImage: UIImage?
     var images = [UIImage]()
+    var assets = [PHAsset]()
+    
     
     fileprivate func assetsFetchOptions() -> PHFetchOptions {
         //fetchOptions是要传入 PHAsset.fetchAssets 的第二个参数
@@ -55,13 +60,13 @@ class PhotoSelectorController: UICollectionViewController, UICollectionViewDeleg
                 let imageManager = PHImageManager.default()
                 
                 //从350*350变成600*600之后，读取时间变长了
-                let targetSize = CGSize(width: 600, height: 600)
+                let targetSize = CGSize(width: 100, height: 100)
                 let options = PHImageRequestOptions()
                 options.isSynchronous = true
                 imageManager.requestImage(for: asset, targetSize: targetSize, contentMode: .aspectFit, options: options) { (image, info) in
                     if let image = image {
                         self.images.append(image)
-                        
+                        self.assets.append(asset)
                         if self.selectedImage == nil {
                             self.selectedImage = image
                         }
@@ -83,10 +88,29 @@ class PhotoSelectorController: UICollectionViewController, UICollectionViewDeleg
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 1, left: 0, bottom: 0, right: 0)
     }
+    
+    var header: PhotoSelectorHeader?
+    
+    
     //大图的view
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! PhotoSelectorHeader
+        
+        self.header = header
+        
         header.photoImageView.image = selectedImage
+        if let selectedImage = selectedImage {
+            if let index = self.images.firstIndex(of: selectedImage) {
+                let selectedAsset = self.assets[index]
+                let imageManager = PHImageManager.default()
+                let targetSize = CGSize(width: 800, height: 800)
+                
+                imageManager.requestImage(for: selectedAsset, targetSize: targetSize, contentMode: .default, options: nil) { (image, info) in
+                    header.photoImageView.image = image
+                }
+            }
+        }
+        
         return header
     }
     //大cell的size layout
@@ -136,6 +160,9 @@ class PhotoSelectorController: UICollectionViewController, UICollectionViewDeleg
     }
     
     @objc func handleNext() {
+        let sharePhotoController = SharePhotoController()
+        sharePhotoController.selectedImage = header?.photoImageView.image
+        navigationController?.pushViewController(sharePhotoController, animated: true)
         
     }
 }
