@@ -36,49 +36,49 @@ class PhotoSelectorController: UICollectionViewController, UICollectionViewDeleg
     
     fileprivate func assetsFetchOptions() -> PHFetchOptions {
         //fetchOptions是要传入 PHAsset.fetchAssets 的第二个参数
-                let fetchOptions = PHFetchOptions()
-                //fetchOptions.fetchLimit = 10
-                
-                //根据创建的时间
-                //TODO:此处需要实现最新的照片在最前面显示的功能，目前是报错，还没找到解决办法
-        //        let sortDescriptor = NSSortDescriptor(key: "creationData", ascending: true)
-        //        fetchOptions.sortDescriptors = [sortDescriptor]
+        let fetchOptions = PHFetchOptions()
+        //fetchOptions.fetchLimit = 10
+        //根据创建的时间
+        //TODO:此处需要实现最新的照片在最前面显示的功能，目前是报错，还没找到解决办法
+        let sortDescriptor = NSSortDescriptor(key: "creationDate", ascending: false)
+        fetchOptions.sortDescriptors = [sortDescriptor]
+        
         return fetchOptions
     }
     
     fileprivate func fetchPhotos() {
         
-        
         let allphotos = PHAsset.fetchAssets(with: .image, options: assetsFetchOptions())
-        allphotos.enumerateObjects { (asset, count, stop) in
-            print(asset)
-            let imageManager = PHImageManager.default()
-            DispatchQueue.global(qos: .background).async {
+        DispatchQueue.global(qos: .background).async {
+            allphotos.enumerateObjects { (asset, count, stop) in
+                print(asset)
+                let imageManager = PHImageManager.default()
+                
                 //从350*350变成600*600之后，读取时间变长了
-                    let targetSize = CGSize(width: 600, height: 600)
-                    let options = PHImageRequestOptions()
-                    options.isSynchronous = true
-                    imageManager.requestImage(for: asset, targetSize: targetSize, contentMode: .aspectFit, options: options) { (image, info) in
-                        if let image = image {
-                            self.images.append(image)
-                            
-                            if self.selectedImage == nil {
-                                self.selectedImage = image
-                            }
-                        }
-                        //之所以有这样一个语句是因为只想让reload方法执行一次
-                        if count == allphotos.count - 1 {
-                            DispatchQueue.main.async {
-                                self.collectionView.reloadData()
-                            }
+                let targetSize = CGSize(width: 600, height: 600)
+                let options = PHImageRequestOptions()
+                options.isSynchronous = true
+                imageManager.requestImage(for: asset, targetSize: targetSize, contentMode: .aspectFit, options: options) { (image, info) in
+                    if let image = image {
+                        self.images.append(image)
+                        
+                        if self.selectedImage == nil {
+                            self.selectedImage = image
                         }
                     }
-                    
+                    //之所以有这样一个语句是因为只想让reload方法执行一次
+                    if count == allphotos.count - 1 {
+                        DispatchQueue.main.async {
+                            self.collectionView.reloadData()
+                        }
+                    }
                 }
+                
             }
-            
+        }
+        
     }
-//
+    //
     //与头部的大图之间的顶部距离
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 1, left: 0, bottom: 0, right: 0)
@@ -105,7 +105,7 @@ class PhotoSelectorController: UICollectionViewController, UICollectionViewDeleg
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 1
     }
-
+    
     //竖线间隔为1
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 1
